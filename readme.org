@@ -15,8 +15,7 @@ pip install -U 'git+https://github.com/NightMachinary/PyExfiltrator'
 * Usage
 #+begin_src python :session p1 :results output :exports both :wrap example
 from pyexfiltrator import exfiltrate, exfiltrated
-# from IPython import embed
-from icecream import ic
+from icecream import ic # prints its input
 
 global_var_1 = "Hi"
 global_var_2 = "ice"
