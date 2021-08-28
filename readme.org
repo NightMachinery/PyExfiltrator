@@ -1,6 +1,6 @@
 #+TITLE: PyExfiltrator
 
-Julia's [[https://github.com/JuliaDebug/Infiltrator.jl#exfiltrate][=@exfiltrate=]] for Python; Exports the local variables into a global dictionary for later debugging.
+Julia's [[https://github.com/JuliaDebug/Infiltrator.jl#exfiltrate][@exfiltrate]] for Python; Exports the local variables into a global dictionary for later debugging.
 
 * Installation
 #+begin_example zsh
