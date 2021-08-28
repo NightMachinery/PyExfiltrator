@@ -1,0 +1,62 @@
+#+TITLE: PyExfiltrator
+
+
+* Installation
+#+begin_example zsh
+pip install pyexfiltrator
+#+end_example
+
+Or install the latest master:
+#+begin_example zsh
+pip install -U 'git+https://github.com/NightMachinary/PyExfiltrator'
+#+end_example
+
+* Usage
+#+begin_src python :session p1 :results output :exports both :wrap example
+from pyexfiltrator import exfiltrate, exfiltrated
+# from IPython import embed
+from icecream import ic
+
+global_var_1 = "Hi"
+global_var_2 = "ice"
+
+def test_fn(arg1=8, arg2=['a', 'b']):
+    print("test_fn started")
+
+    global global_var_1
+    local_var_1 = (1,2,3)
+
+    ic(exfiltrate())
+
+    print("test_fn finished")
+
+def test_fn2(arg1=3, arg3='monkey'):
+    print("test_fn2 started")
+
+    local_var_2 = None
+
+    ic(exfiltrate())
+
+    print("test_fn2 finished")
+
+test_fn(arg1=10)
+ic(exfiltrated)
+test_fn2()
+ic(exfiltrated)
+#+end_src
+
+#+RESULTS:
+#+begin_example
+>>> test_fn started
+ic| exfiltrate(): {'arg1': 10, 'arg2': ['a', 'b'], 'local_var_1': (1, 2, 3)}
+test_fn finished
+ic| exfiltrated: {'arg1': 10, 'arg2': ['a', 'b'], 'local_var_1': (1, 2, 3)}
+test_fn2 started
+ic| exfiltrate(): {'arg1': 3, 'arg3': 'monkey', 'local_var_2': None}
+test_fn2 finished
+ic| exfiltrated: {'arg1': 3,
+                  'arg2': ['a', 'b'],
+                  'arg3': 'monkey',
+                  'local_var_1': (1, 2, 3),
+                  'local_var_2': None}
+#+end_example
