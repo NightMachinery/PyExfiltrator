@@ -60,3 +60,6 @@ ic| exfiltrated: {'arg1': 3,
                   'local_var_1': (1, 2, 3),
                   'local_var_2': None}
 #+end_example
+
+* License
+The MIT License
